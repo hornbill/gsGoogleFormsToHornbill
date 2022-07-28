@@ -51,15 +51,13 @@ function updateCustomFields(endpoint, apiKey, requestRef, itemResponses) {
   }
   
   var url = endpoint + 'apps/com.hornbill.servicemanager/Requests?op=update';
-  var data = {
-    "methodCall":{
+  var methodCall={
       "@service":"apps/com.hornbill.servicemanager/Requests",
       "@method":"update",
       "params": {
         "requestId": requestRef,
         "customFields": JSON.stringify(customFields)
       }
-    }
   };
   var options = {
     'method' : 'post',
@@ -69,7 +67,7 @@ function updateCustomFields(endpoint, apiKey, requestRef, itemResponses) {
       'Accept': 'application/json',
       'Authorization': 'ESP-APIKEY ' + apiKey,
     },
-    'payload' : JSON.stringify(data)
+    'payload' : JSON.stringify(methodCall)
   };
  
   UrlFetchApp.fetch(url, options);
@@ -77,8 +75,7 @@ function updateCustomFields(endpoint, apiKey, requestRef, itemResponses) {
 
 function updateStatus(endpoint, apiKey, requestRef) {
   var url = endpoint + 'apps/com.hornbill.servicemanager/Requests?op=smUpdateStatus';
-  var data = {
-    "methodCall":{
+  var methodCall={
       "@service":"apps/com.hornbill.servicemanager/Requests",
       "@method":"smUpdateStatus",
       "params": {
@@ -86,7 +83,6 @@ function updateStatus(endpoint, apiKey, requestRef) {
         "status": "Open",
         "manualUpdateTimeline": "The customer has submitted their personal details via Google Forms."
       }
-    }
   };
   var options = {
     'method' : 'post',
@@ -96,7 +92,7 @@ function updateStatus(endpoint, apiKey, requestRef) {
       'Accept': 'application/json',
       'Authorization': 'ESP-APIKEY ' + apiKey,
     },
-    'payload' : JSON.stringify(data)
+    'payload' : JSON.stringify(methodCall)
   };
  
   UrlFetchApp.fetch(url, options);
