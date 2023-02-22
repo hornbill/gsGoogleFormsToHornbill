@@ -40,13 +40,11 @@ function logIncident(endpoint, apiKey, itemResponses) {
     }
   }
   var data = {
-    "methodCall":{
-      "@service":service,
-      "@method":method,
-      "params": {
-        "summary": summary,
-        "description": description
-      }
+    "@service":service,
+    "@method":method,
+    "params": {
+      "summary": summary,
+      "description": description
     }
   };
   var options = {
@@ -85,13 +83,11 @@ function updateCustomFields(endpoint, apiKey, requestRef, itemResponses) {
   
   var url = endpoint + service + '?op=' + method;
   var data = {
-    "methodCall":{
-      "@service":service,
-      "@method":method,
-      "params": {
-        "requestId": requestRef,
-        "customFields": JSON.stringify(customFields)
-      }
+    "@service":service,
+    "@method":method,
+    "params": {
+      "requestId": requestRef,
+      "customFields": JSON.stringify(customFields)
     }
   };
   var options = {
