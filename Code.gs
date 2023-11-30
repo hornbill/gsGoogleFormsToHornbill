@@ -26,7 +26,7 @@ function getEndpoint(instanceId) {
     }
   };
   var  ziParsed = JSON.parse(UrlFetchApp.fetch(url, options).getContentText());
-  return ziParsed.zoneinfo.endpoint + "xmlmc/";
+  return ziParsed.zoneinfo.endpoint ? ziParsed.zoneinfo.apiEndpoint : ziParsed.zoneinfo.endpoint + "xmlmc/" ;
 }
 
 function updateCustomFields(endpoint, apiKey, requestRef, itemResponses) {
